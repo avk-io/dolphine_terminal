@@ -10,8 +10,7 @@ const rl = readline.createInterface({input,output});
             return;
         } 
         try{
-            const reply = await chat(answer);
-            console.log(`Dolphin > ${reply}`);
+            await chat(answer)
         }catch(error){
             console.log(error);
         }finally{
