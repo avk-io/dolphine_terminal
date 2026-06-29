@@ -12,7 +12,7 @@ A terminal-based AI assistant powered by Ollama.
 
 - [x] CLI
 - [x] Ollama integration
-- [ ] Streaming responses
+- [x] Streaming responses
 - [ ] Conversation history
 - [ ] Slash commands
 - [ ] Markdown rendering
