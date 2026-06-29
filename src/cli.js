@@ -3,6 +3,9 @@ const {stdin: input,stdout: output} = require('node:process');
 const {chat} = require('./ollama')
 const rl = readline.createInterface({input,output});
 
+const messages = [];
+
+
     const startCLI =()=>{ rl.question('You > ',async(answer)=>{
         if(answer==='exit'){
             console.log("GoodBye!")
@@ -10,7 +13,15 @@ const rl = readline.createInterface({input,output});
             return;
         } 
         try{
-            await chat(answer)
+            messages.push({
+                role:'user',
+                content : answer
+            })
+           const reply =  await chat(messages)
+           messages.push({
+            role:"assistant",
+            content:reply
+           })
         }catch(error){
             console.log(error);
         }finally{

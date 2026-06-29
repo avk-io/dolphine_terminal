@@ -1,11 +1,9 @@
 const axios = require('axios');
 
-async function chat(message) {
+async function chat(messages) {
     const payload = {
         model: "dolphin-phi:latest",
-        messages: [
-            { role: "user", content: message }
-        ],
+        messages,
         stream: true
     };
 
@@ -22,7 +20,7 @@ async function chat(message) {
         let fullResponse = "";
 
         return new Promise((resolve, reject) => {
-
+            process.stdout.write("\n");
             process.stdout.write("Dolphine > ")
 
             stream.on("data", (chunk) => {
@@ -48,6 +46,8 @@ async function chat(message) {
 
             stream.on("end", () => {
                 process.stdout.write("\n");
+                process.stdout.write("\n");
+
                 resolve(fullResponse);
             });
 
@@ -64,3 +64,4 @@ async function chat(message) {
 }
 
 module.exports = { chat };
+   
